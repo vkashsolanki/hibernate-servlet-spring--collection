@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.onlinetutorialspoint.hibernate.model.Payment" table="payment">
+        <id name="paymentId" column="payid"/>
+        <discriminator column="paymode" type="string"/>
+        <property name="amount"/>
+        <property name="paymentDate" column="paydate" type="date"/>
+        <subclass name="com.onlinetutorialspoint.hibernate.model.Card" discriminator-value="cp">
+            <property name="cardNumber" column="cardnumber"/>
+            <property name="cardType" column="cardtype"/>
+        </subclass>
+        <subclass name="com.onlinetutorialspoint.hibernate.model.Cheque" discriminator-value="chp">
+            <property name="chequeNumber" column="chqnumber"/>
+            <property name="chequeType" column="chqtype"/>
+        </subclass>
+    </class>
+</hibernate-mapping>

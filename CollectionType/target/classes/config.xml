@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+<!-- meta data of bean class tell spring container  and setter injection here  -->
+
+
+<bean class="com.collections.Employee" name="employee">
+<property name="name" value="Radheyshyam"/>
+<property name="phones">
+<list>
+<value>8978457845</value>
+<value>8956895611</value>
+<value>5689568956</value>
+<value>89568956898</value>
+</list>
+</property>
+
+<property name="address">
+<set>
+<value>Gurgaon</value>
+<value>Noida</value>
+<value>Patna</value>
+<value>Mumbai</value>
+<value>Delhi</value>
+<null></null>
+</set>
+</property>
+
+<property name="course">
+<map>
+<entry key="Java" value="3month"/>
+<entry key="Spring" value="2month"/>
+<entry key="React Js" value="1month"/>
+
+
+
+</map>
+</property>
+
+</bean>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        </beans>
+        
+        

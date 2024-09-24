@@ -1,0 +1,62 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+<meta name="viewport" content="width=device-width, initial-scale=1">  
+<style>  
+body{  
+  font-family: Calibri, Helvetica, sans-serif;  
+  background-color: pink;  
+}  
+.container {  
+    padding: 50px;  
+  background-color: lightblue;  
+}  
+  
+  
+  
+  div {  
+            padding: 10px 0;  
+         }  
+hr {  
+  border: 1px solid #f1f1f1;  
+  margin-bottom: 25px;  
+}  
+.registerbtn {  
+  background-color: #4CAF50;  
+  color: white;  
+  padding: 16px 20px;  
+  margin: 8px 0;  
+  border: none;  
+  cursor: pointer;  
+  width: 100%;  
+  opacity: 0.9;  
+}  
+ 
+</style>  
+</head>  
+<body>  
+<form action="BlServlet">  
+  <div class="container">  
+  <center>  <h1> Employee Registeration Form</h1> </center>  
+  <hr>  
+ <label> Name : </label>   
+<input type="text" name="name" placeholder= "name" size="151" required />   
+<hr>
+<label> Email: </label>   
+<input type="email" name="email" placeholder="email" size="151" required /> 
+<hr>  
+<label> Mobile: </label>    
+<input type="number" name="mobile" placeholder="mobile" size="151" required /> 
+<hr>
+  <label> Password : </label>   
+<input type="password" name="password" placeholder= "password" size="149" required /> 
+<hr>
+</div>  
+<div>  
+    <button type="submit" class="registerbtn">Register</button> 
+    
+    </div>
+       
+</form>  
+</body>  
+</html>  

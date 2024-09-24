@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:context="http://www.springframework.org/schema/context"
+xmlns:p="http://www.springframework.org/schema/p"
+xmlns:tx="http://www.springframework.org/schema/tx"
+xsi:schemaLocation="
+http://www.springframework.org/schema/beans
+https://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/context
+https://www.springframework.org/schema/context/spring-context.xsd
+http://www.springframework.org/schema/tx
+https://www.springframework.org/schema/tx/spring-tx.xsd">
+
+
+<!-- for transationManager on only -->
+<tx:annotation-driven/>
+
+
+<context:component-scan base-package="com.productapp"></context:component-scan>
+
+<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" name="viewResolver">
+<!--inside webinf create folder with name of view for jsp page -->
+<property name="prefix" value="/WEB-INF/views"></property>
+<property name="suffix" value=".jsp"></property>
+</bean>
+
+<!--datasource  -->
+<bean class="org.springframework.jdbc.datasource.DriverManagerDataSource" id="ds">
+<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+<property name="url" value="jdbc:mysql://localhost:3306/crudoperation"/>
+<property name="username" value="root"/>
+<property name="password" value="root"/>
+</bean>
+
+
+<bean class="org.springframework.orm.hibernate5.LocalSessionFactoryBean" name="factory">
+<!-- DataSource -->
+<property name="dataSource" value="ds"></property>
+
+<!-- hibernate properties -->
+<property name="hibernateproperties">
+<props>
+<prop key="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</prop>
+<prop key="hibernate.show_sql">true</prop>
+<prop key="hibernate.hbm2ddl.auto">update</prop>
+</props>
+</property>
+<!--Annotated class -->
+<property name="annotatedClasses">
+<list>
+<value>com.productapp.model.Product</value>
+</list>
+</property>
+</bean>
+<!--pass in ref factory becouse name/id is factory inside localsessionfactorybeans  -->
+<bean class="org.springframework.orm.hibernate5.HibernateTemplate" name="hibernateTemplate">
+<property name="sessionFactory" ref="factory"></property>
+</bean>
+
+<!-- We can use only for write data from database use transactionmanager other no need this transactionmangaer -->
+<bean class="org.springframework.orm.hibernate5.HibernateTransactionManager" name="transationManager">
+<!--pass in ref factory becouse name/id is factory inside localsessionfactorybeans  with name sessionfactory-->
+<property name="sessionFactory" ref="factory"></property>
+</bean>
+
+
+
+
+</beans>

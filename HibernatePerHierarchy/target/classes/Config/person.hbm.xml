@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping SYSTEM 
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- this dtd above for hbm only hibernate mapping -->
+<hibernate-mapping>
+<class name="com.bean.Person" table="Person_table" discriminator-value="person">
+
+<id name="id" ><generator class="increment"></generator></id>
+<discriminator column="cid"></discriminator>
+
+<property name="name"></property>
+<subclass name="bean.Employee" discriminator-value="employee">
+<property name="course"></property>
+<property name="fees"></property>
+</subclass>
+
+<subclass name="bean.Student" discriminator-value="student">
+<property name="jobtype"></property>
+<property name="salary"></property>
+</subclass>
+
+
+
+</class>
+</hibernate-mapping>
